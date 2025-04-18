@@ -9,13 +9,13 @@
     <section class="w-full min-h-auto hidden md:block">
         <div x-data="{ open: false }" @mouseover="open = true" @mouseout="open = false" id="default-carousel"
             class="relative cursor-pointer w-full" data-carousel="slide">
-            <div class="relative h-56 max-w-full lg:w-[1470px] mx-auto overflow-hidden lg:h-[450px]">
+            <div class="relative h-300 max-w-full lg:w-[1470px] mx-auto overflow-hidden lg:h-[450px]">
 
                 @foreach($gallery as $lide)
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="{{ asset($lide['img']) }}" class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 h-full w-full object-cover" alt="{{ $lide['alt'] }}">
                         <div class="flex-col justify-center align-center absolute text-white text-center h-full w-full mt-8">
-                            <h2 class="text-xl font-semibold w-11/12 m-auto text-shadow shadow-gray-400 lg:text-4xl"
+                            <h2 class="text-3xl font-semibold w-11/12 m-auto text-shadow shadow-gray-400 lg:text-4xl"
                         x-transition:enter="transition ease-out duration-400" x-transition:enter-start="opacity-0 -translate-y-6"
                         x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-400"
                         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0 -translate-y-6">{{ $lide['header'] }}</h2>
