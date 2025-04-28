@@ -1,6 +1,4 @@
-<?php
-namespace Subpages;
-?>
+
         <nav class="sticky top-0 z-50 bg-black text-white md:hidden">
             <ul class=" items-center align-middle justify-center text-base text-nowrap py-auto min-h-12">
 
@@ -11,10 +9,12 @@ namespace Subpages;
                     </span>
 
                     <!-- Dropdown menu -->
-<?php
-$class = "block px-4 py-2 bg-neutral-800 md:bg-teal-400 transform duration-200 md:hover:bg-teal-300";
-$about = array("STATUT FUNDACJI"=>"/statut-fundacji", "ZARZĄD FUNDACJI"=>"/zarzad-fundacji", "CELE I ZASADY DZIAŁANIA"=>"/cele-i-zasady-dzialania", "DZIAŁALNOŚĆ GOSPODARCZA"=>"/dzialalnosc-gospodarcza", "SPRAWOZDANIA"=>"/sprawozdania");
-                     foreach($about as $dr => $h): ?>
+                     @php
+    $class = "block px-4 py-2 bg-neutral-800 md:bg-teal-400 
+    transform duration-200 md:hover:bg-teal-300";
+        @endphp
+
+                     @foreach($menuData['about'] as $dr => $h) 
                     <div x-show="open" x-transition:enter="transition ease-out duration-500"
             x-transition:enter-start="opacity-0 -translate-x-6" 
             x-transition:enter-end="opacity-100"
@@ -24,22 +24,19 @@ $about = array("STATUT FUNDACJI"=>"/statut-fundacji", "ZARZĄD FUNDACJI"=>"/zarz
             class="w-full block left-0 z-50 divide-y divide-teal-100 min-w-48">
             <ul class="flex flex-col text-xs text-gray-700 dark:text-gray-200">
                 <li>
-            <a href="<?= htmlspecialchars($h) ?>"  
-            class="<?= htmlspecialchars($class) ?>"><p class="py-2">
-            <?= htmlspecialchars($dr) ?>
+            <a href="{{ $h }})"  
+            class="{{ $class }}"><p class="py-2">{{ $dr }}
             </p></a>
         </li>
-        
-<?php endforeach; 
+        @endforeach
 
-$menu = array("PRAKTYKI"=>"praktyki", "PROJEKTY"=>"projekty", "AKTUALNOŚCI"=>"aktualnosci", "GALERIA"=>"galeria", "KONTAKT"=>"kontakt", "OPINIE"=>"opinie");
-foreach($menu as $m => $h): ?>
+    @foreach($menuData['main'] as $m => $h)
 
                 <li class="box-border text-sm cursor-pointer transform duration-300 flex items-center h-full md:hover:bg-teal-300">
-            <a href="<?= htmlspecialchars($h) ?>" class="block py-2 w-full h-full"><p class="py-2 px-2"><?= htmlspecialchars($m) ?>
-            </p></a>
+            <a href="{{ $h }}" class="block py-2 w-full h-full"><p class="py-2 px-2">
+                {{ $m }}</p></a>
         </li>
-<?php endforeach; ?> 
+    @endforeach
 
             </ul>
         </div>
@@ -69,28 +66,27 @@ foreach($menu as $m => $h): ?>
     x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0 -translate-x-6"
     class="absolute top-9 lg:top-14 left-0 z-50 bg-teal-400 divide-y divide-teal-100 min-w-48">
-    <ul class="text-xs text-gray-700 dark:text-gray-200"> 
+    <ul class="text-xs text-gray-700 dark:text-gray-200">
 
-<?php
-foreach($about as $dr => $h): ?>
+@foreach($menuData['about'] as $dr => $h)
     <li>
-    <a href="<?= htmlspecialchars($h) ?>" class="<?= $class ?>"><p class="py-2"><?= htmlspecialchars($dr) ?></p></a>
+    <a href="{{ $h }}" class="{{ $class }}"><p class="py-2">{{ $dr }}</p></a>
 
 </li>
-<?php endforeach; ?> 
+@endforeach 
 
     </ul>
 </div>
 
                 </li>
 
-<?php foreach($menu as $m => $h): ?>
+@foreach($menuData['main'] as $m => $h)
 
     <li class="box-border text-sm cursor-pointer transform duration-300 flex items-center h-full md:hover:bg-teal-300">
-        <a href="/<?= htmlspecialchars($h) ?>" class="block py-2 w-full h-full"><p class="py-2 px-2"><?= htmlspecialchars($m) ?>
-                </p></a>
+        <a href="{{ $h }}" class="block py-2 w-full h-full"><p class="py-2 px-2">{{ $m }}</p></a>
         </li>
-<?php endforeach; ?>
+@endforeach
 
             </ul>
+
         </nav>

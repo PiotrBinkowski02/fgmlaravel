@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     /**
-     * Display a listing of news (aktualnosci)
+     * Display a listing of news 
      */
     public function indexNews()
     {
@@ -20,7 +20,7 @@ class PostController extends Controller
     }
 
     /**
-     * Display a listing of projects (projekty)
+     * Display a listing of projects
      */
     public function indexProjects()
     {
@@ -44,6 +44,4 @@ class PostController extends Controller
         return view($view, compact('post'));
     }
 
-    // Other resource methods (create, store, edit, update, destroy) would go here
-    // but you might not need them if this is just for display
 }
