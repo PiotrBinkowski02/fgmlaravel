@@ -16,7 +16,7 @@ class PostController extends Controller
                    ->latest()
                    ->paginate(10);
                    
-        return view('posts.news-index', compact('news'));
+        return view('home', compact('news'));
     }
 
     /**
@@ -24,11 +24,11 @@ class PostController extends Controller
      */
     public function indexProjects()
     {
-        $projects = Post::where('type', 'project')
+        $projects = Post::where('type', 'projects')
                       ->latest()
                       ->paginate(10);
                       
-        return view('posts.projects-index', compact('projects'));
+        return view('home', compact('projects'));
     }
 
     /**

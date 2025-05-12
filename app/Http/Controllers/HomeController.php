@@ -1,54 +1,22 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $news = Post::where('type', 'news')
+                ->latest()
+                ->take(3)
+                ->get();
         
-        $aktualnosci = [
-            [
-                'title' => 'PressGlobal.pl -Nowy innowacyjny serwis informacyjny.',
-                'slug' => 'pressglobal-pl-nowy-innowacyjny-serwis-informacyjny',
-                'image' => 'images/obraz_2023-02-20_093941572.png',
-                'desc' => 'Należy podkreślić, że Fundacja nie zrezygnowała z prowadzenia portalu informacyjnego, a wręcz przeciwnie  - w wyniku przekazania portalu plportal.pl powstał zupełnie nowy serwis informacyjny o nazwie PressGlobal.pl. Projekt ten został sfina...'
-            ],
-                [
-                'title' => 'Zawieszenie działalności e-magnes',
-                'slug' => 'zawieszenie-dzialanosci-e-magnes',
-                'image' => 'images/logo_plportalpl-150x150.png',
-                'desc' => 'Fundacja Głos Młodych, dokonała w ostatnim czasie istotnych zmian w swojej działalności. Ze względu na koszty - Fundacja zawiesiła działalność portalu e-magnes oraz przekazała nieodpłatnie portal o nazwie i pod domeną- https://plportal.pl...'
-            ],
-                [
-                'title' => 'Portal PressGlobal jest gotowy!',
-                'slug' => 'portal-pressglobal-jest-gotowy',
-                'image' => 'images/presssglobal_logo_20.02.23-150x150.jpg',
-                'desc' => 'Projekt “PressGlobal” oraz towarzysząca mu strona pressglobal.pl to nowy, dynamicznie rozwijający się portal wiadomości stworzony w ramach działań Fundacji “Głos Młodych”.Projekt ma na celu dostarczać rzetelnych informacji i opinii świata z...'
-            ],
-        ];
-
-        $projekty = [
-            [
-                'title' => 'Powstanie serwisu aukcyjnego',
-                'slug' => 'powstanie-serwisu-aukcyjnego',
-                'image' => 'images/kurier-150x150.jpg',
-                'desc' => 'W ramach praktyk studenckich oraz zlecona zespołowa praca dyplomowa powstała w 2019 roku duża platforma sprzedażowa wraz z aukcjami i serwisem własnym płatności. Projekt nadzorowali Dawid Kowalski , Marcin Tadaszak, Patryk Rajba - całość ko...'
-            ],
-            [
-                'title' => '„Głos Wschodu”',
-                'slug' => 'glos-wschodu',
-                'image' => 'images/gloswschodu-150x150.jpg',
-                'desc' => '„Głos Wschodu” to nazwa najnowszego projektu Fundacji na Rzecz Promocji i Rozwoju " Głos Młodych" oraz towarzyszący mu portal internetowy www.gloswschodu.org, który w chwili obecnej jest ciągle rozbudowywany. Głównym celem przedsięwzięc...'
-            ],
-            [
-                'title' => 'Powstał nowy portal e-magnes.pl',
-                'slug' => 'powstal-nowy-portal-e-magnes-pl',
-                'image' => 'images/emagnes-150x150.png',
-                'desc' => 'Powstał nowy portal www.e-magnes.pl , którego zadaniem jest umożliwienie Wam czynnego uczestnictwa w życiu społeczeństwa. Ideą tego przedsięwzięcia jest działanie w interesie młodego pokolenia, mówienie głośno o jego potrzebach i problemach...'
-            ],
-        ];
+        $projects = Post::where('type', 'projects')
+                ->latest()
+                ->take(3)
+                ->get();
 
         $gallery = [
             [
@@ -94,6 +62,8 @@ class HomeController extends Controller
         ];
      
         return view('home', [
+            'news' => $news,
+            'projects' => $projects,
             'gallery' => $gallery,
             'praktykiCount' => 4768,
             'praktykiUczelnianeCount' => 4242,
@@ -101,8 +71,6 @@ class HomeController extends Controller
             'phone1' => '794 250 440',
             'phone2' => '733 636 477',
             'email' => 'kontakt@fundacjaglosmlodych.org',
-            'aktualnosci' => $aktualnosci,
-            'projekty' => $projekty,
         ]);
     }
 }

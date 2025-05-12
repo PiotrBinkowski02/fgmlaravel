@@ -41,6 +41,24 @@
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
+  'open-admin-ext/helpers' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'OpenAdmin\\Admin\\Helpers\\HelpersServiceProvider',
+    ),
+  ),
+  'open-admin-org/open-admin' => 
+  array (
+    'aliases' => 
+    array (
+      'Admin' => 'OpenAdmin\\Admin\\Facades\\Admin',
+    ),
+    'providers' => 
+    array (
+      0 => 'OpenAdmin\\Admin\\AdminServiceProvider',
+    ),
+  ),
   'pestphp/pest-plugin-laravel' => 
   array (
     'providers' => 

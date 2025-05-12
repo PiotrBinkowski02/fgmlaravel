@@ -107,12 +107,13 @@
         </div>
     </section>
 
+    <!-- aktualności -->
     <section>
         <div class="grid lg:grid-cols-2 items-start w-full max-w-full xl:max-w-[1470px] mx-auto my-4">
             <div class="space-x-2 flex flex-col mb-12">
                 <h1 class="text-center text-3xl font-bold">Aktualności</h1>
 
-                @forelse($aktualnosci as $newsItem)
+                @forelse($news as $newsItem)
                     <div class="min-w-96 max-w-1/2 basis-1/3 flex-1 min-h-48">
                         <div class="items-center px-2 min-h-[150px] w-full bg-white md:flex-row">
                             <img class="float-left pr-2 w-[150px] max-w-full h-[150px] max-h-full object-cover"
@@ -141,10 +142,11 @@
                 <div class="text-center font-semibold text-blue-600"><a href="{{ route('news.index') }}">Zobacz Wszystkie</a></div>
             </div>
 
+            <!-- Projekty -->
             <div class="space-x-2 flex flex-col mb-12">
                 <h1 class="text-center text-3xl font-bold">Projekty</h1>
 
-                @forelse($projekty as $projectItem)
+                @forelse($projects as $projectItem)
                     <div class="min-w-96 max-w-1/2 basis-1/3 flex-1 min-h-48">
                         <div class="items-center px-2 min-h-[150px] w-full bg-white md:flex-row">
                             <img class="float-left pr-2 w-[150px] max-w-full h-[150px] max-h-full object-cover"
